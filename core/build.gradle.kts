@@ -1,5 +1,6 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    kotlin("multiplatform") version "1.7.21"
+    kotlin("multiplatform")
 }
 
 group = "dev.jimmymorales"
@@ -8,7 +9,7 @@ version = "0.0.1"
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "11"
+            kotlinOptions.jvmTarget = libs.versions.jvm.target.get()
         }
         withJava()
         testRuns["test"].executionTask.configure {
@@ -18,7 +19,9 @@ kotlin {
     js(IR) {
         browser {
             commonWebpackConfig {
-                cssSupport.enabled = true
+                cssSupport {
+                    enabled = true
+                }
             }
         }
     }
@@ -30,7 +33,6 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-
 
     sourceSets {
         val commonMain by getting
