@@ -1,6 +1,10 @@
 [versions]
-jvm_target = "11"
+jvm-target = "11"
 kotlin = "1.7.21"
+stately = "1.2.3"
 
 [plugins]
-kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+[libraries]
+stately-collections = { module = "co.touchlab:stately-iso-collections", version.ref = "stately" }
