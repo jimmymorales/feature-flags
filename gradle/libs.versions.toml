@@ -1,6 +1,6 @@
 [versions]
 jvm-target = "11"
-kotlin = "1.7.21"
+kotlin = "1.7.22"
 stately = "1.2.3"
 
 [plugins]
