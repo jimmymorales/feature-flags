@@ -12,6 +12,8 @@ pluginManagement {
             }
         }
     }
+
+    includeBuild("build-logic")
 }
 
 dependencyResolutionManagement {
