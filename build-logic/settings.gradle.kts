@@ -9,6 +9,18 @@ pluginManagement {
         exclusiveContent {
             forRepository(::gradlePluginPortal)
             filter {
+                includeModule(
+                    "com.autonomousapps.dependency-analysis",
+                    "com.autonomousapps.dependency-analysis.gradle.plugin"
+                )
+                includeModule(
+                    "com.autonomousapps.plugin-best-practices-plugin",
+                    "com.autonomousapps.plugin-best-practices-plugin.gradle.plugin"
+                )
+                includeModule("com.autonomousapps", "plugin-best-practices-plugin")
+                includeModule("com.diffplug.spotless", "com.diffplug.spotless.gradle.plugin")
+                includeModule("org.gradle.kotlin.embedded-kotlin", "org.gradle.kotlin.embedded-kotlin.gradle.plugin")
+                includeModule("org.gradle.kotlin", "gradle-kotlin-dsl-plugins")
             }
         }
     }
@@ -31,3 +43,6 @@ dependencyResolutionManagement {
 rootProject.name = "build-logic"
 
 include(":convention-plugins")
+
+// https://docs.gradle.org/7.5/userguide/groovy_plugin.html#sec:groovy_compilation_avoidance
+enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")

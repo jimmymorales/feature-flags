@@ -1,10 +1,22 @@
 [versions]
+detekt = "1.22.0"
+gradle-bestPracticesPlugin = "0.9"
+gradle-dependencyAnalysis = "1.17.0"
+jdk = "18"
 jvm-target = "11"
 kotlin = "1.7.21"
+ktfmt = "0.39"
 stately = "1.2.3"
+spotless = "6.11.0"
 
 [plugins]
+bestPracticesPlugin = { id = "com.autonomousapps.plugin-best-practices-plugin", version.ref = "gradle.bestPracticesPlugin" }
+dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradle.dependencyAnalysis" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-samWithReceiver = { id = "org.jetbrains.kotlin.plugin.sam.with.receiver", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 
 [libraries]
 stately-collections = { module = "co.touchlab:stately-iso-collections", version.ref = "stately" }
