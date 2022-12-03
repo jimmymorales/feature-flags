@@ -2,7 +2,6 @@
 
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.dokka.gradle.DokkaTask
-import java.net.URL
 
 buildscript {
     dependencies {
@@ -31,7 +30,7 @@ subprojects {
         }
 
         configure<MavenPublishBaseExtension> {
-            publishToMavenCentral(automaticRelease = true)
+            publishToMavenCentral(host = com.vanniktech.maven.publish.SonatypeHost.S01, automaticRelease = true)
             signAllPublications()
         }
     }

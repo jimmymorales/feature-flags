@@ -1,10 +1,8 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     kotlin("multiplatform")
+    alias(libs.plugins.mavenPublish)
 }
-
-group = "dev.jimmymorales"
-version = "0.0.1"
 
 kotlin {
     jvm {
