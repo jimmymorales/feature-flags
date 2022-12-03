@@ -49,7 +49,6 @@ dependencyResolutionManagement {
             filter { includeModuleByRegex(".*", ".*kotlin-native-prebuilt.*") }
         }
 
-
         // Declare the Node.js & Yarn download repositories
         exclusiveContent {
             forRepository {
