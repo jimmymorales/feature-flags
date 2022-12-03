@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  # Only run push on main
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+  # Always run on PRs
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Build and run tests
+        id: gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: check --no-configuration-cache
+
+      - name: (Fail-only) Bundle the build report
+        if: failure()
+        run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
+
+      - name: (Fail-only) Upload the build report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-report
+          path: build-reports.zip
+
+      - name: Publish snapshot (main branch only)
+        if: github.ref == 'refs/heads/main'
+        run: ./gradlew publish -PmavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }} -PmavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}
