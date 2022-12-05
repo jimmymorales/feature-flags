@@ -13,7 +13,7 @@ Multiplatform library for kotlin that provides a very easy to use way of managin
 Add the dependency below to your **module**'s `build.gradle` file:
 ```gradle
 dependencies {
-    // TODO
+    implementation("dev.jimmymorales:feature-flags-core:0.1.0")
 }
 ```
 

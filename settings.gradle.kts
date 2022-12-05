@@ -17,6 +17,8 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
+        mavenLocal()
+
         google()
         mavenCentral()
         // workaround for https://youtrack.jetbrains.com/issue/KT-51379
