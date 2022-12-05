@@ -80,6 +80,9 @@ rootProject.name = "feature-flags"
 
 include(":core")
 
+include(":sample-android")
+project(":sample-android").projectDir = File(rootDir, "samples/android")
+
 // https://docs.gradle.org/7.5/userguide/groovy_plugin.html#sec:groovy_compilation_avoidance
 enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")
 

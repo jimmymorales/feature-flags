@@ -1,4 +1,5 @@
 [versions]
+agp = "7.4.0-rc01"
 dokka = "1.7.20"
 jvm-target = "11"
 kotlin = "1.7.21"
@@ -6,6 +7,7 @@ mavenPublish = "0.22.0"
 stately = "1.2.3"
 
 [plugins]
+agp-app = { id = "com.android.application", version.ref = "agp" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

@@ -16,6 +16,7 @@ buildscript {
 plugins {
     alias(libs.plugins.mavenPublish) apply false
     alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.agp.app) apply false // needed for android sample
 }
 
 subprojects {
