@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.mavenPublish)
 }
 
+val libName = "FeatureFlagsCore"
 kotlin {
     jvm {
         compilations.all {
@@ -13,6 +14,9 @@ kotlin {
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
         }
+    }
+    iosX64 {
+        binaries.framework(libName)
     }
     js(IR) {
         browser {
@@ -49,5 +53,7 @@ kotlin {
         val jsTest by getting
         val nativeMain by getting
         val nativeTest by getting
+        val iosX64Main by getting
+        val iosX64Test by getting
     }
 }
