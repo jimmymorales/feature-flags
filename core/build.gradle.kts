@@ -1,3 +1,5 @@
+import co.touchlab.faktory.versionmanager.VersionManager
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     kotlin("multiplatform")
@@ -59,9 +61,13 @@ kotlin {
     }
 }
 
+object NoOpVersionManager : VersionManager {
+    override fun getVersion(project: Project, versionPrefix: String): String = versionPrefix
+    override fun recordVersion(project: Project, versionString: String) {}
+}
 kmmbridge {
     frameworkName.set(libName)
-    manualVersions()
+    versionManager.set(NoOpVersionManager)
     mavenPublishArtifacts()
-    spm(spmDirectory = rootProject.projectDir.path)
+    spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
 }
