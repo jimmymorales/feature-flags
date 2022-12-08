@@ -2,6 +2,7 @@
 plugins {
     kotlin("multiplatform")
     alias(libs.plugins.mavenPublish)
+    alias(libs.plugins.kmmbridge)
 }
 
 val libName = "FeatureFlagsCore"
@@ -56,4 +57,11 @@ kotlin {
         val iosX64Main by getting
         val iosX64Test by getting
     }
+}
+
+kmmbridge {
+    frameworkName.set(libName)
+    manualVersions()
+    mavenPublishArtifacts()
+    spm(spmDirectory = rootProject.projectDir.path)
 }
