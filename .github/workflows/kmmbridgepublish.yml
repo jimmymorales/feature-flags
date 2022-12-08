@@ -1,0 +1,6 @@
+name: KMMBridge Publish Release
+on: workflow_dispatch
+
+jobs:
+  call-kmmbridge-publish:
+    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildbranches.yml@v0.7
