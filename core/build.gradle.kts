@@ -1,13 +1,9 @@
-import co.touchlab.faktory.versionmanager.VersionManager
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     kotlin("multiplatform")
     id("dev.jimmymorales.featureflags.gradle.publish")
-    alias(libs.plugins.kmmbridge)
 }
 
-val libName = "FeatureFlagsCore"
 kotlin {
     jvm {
         compilations.all {
@@ -19,7 +15,7 @@ kotlin {
         }
     }
     iosX64 {
-        binaries.framework(libName)
+        binaries.framework("FeatureFlagsCore")
     }
     js(IR)
     val hostOs = System.getProperty("os.name")
@@ -51,15 +47,4 @@ kotlin {
         val iosX64Main by getting
         val iosX64Test by getting
     }
-}
-
-object NoOpVersionManager : VersionManager {
-    override fun getVersion(project: Project, versionPrefix: String): String = versionPrefix
-    override fun recordVersion(project: Project, versionString: String) {}
-}
-kmmbridge {
-    frameworkName.set(libName)
-    versionManager.set(NoOpVersionManager)
-    mavenPublishArtifacts()
-    spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
 }

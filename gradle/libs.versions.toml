@@ -15,7 +15,6 @@ agp-app = { id = "com.android.application", version.ref = "agp" }
 bestPracticesPlugin = { id = "com.autonomousapps.plugin-best-practices-plugin", version.ref = "gradle.bestPracticesPlugin" }
 dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "gradle.dependencyAnalysis" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-kmmbridge = { id = "co.touchlab.faktory.kmmbridge", version.ref = "kmmbridge" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-samWithReceiver = { id = "org.jetbrains.kotlin.plugin.sam.with.receiver", version.ref = "kotlin" }
@@ -24,5 +23,6 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 [libraries]
 stately-collections = { module = "co.touchlab:stately-iso-collections", version.ref = "stately" }
 
-gradlePlugin-mavenPublish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "mavenPublish" }
 gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+gradlePlugin-kmmbridge = { module = "co.touchlab.faktory:kmmbridge", version.ref = "kmmbridge" }
+gradlePlugin-mavenPublish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "mavenPublish" }

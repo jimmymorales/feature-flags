@@ -1,8 +1,11 @@
 package dev.jimmymorales.featureflags.gradle
 
+import co.touchlab.faktory.KMMBridgePlugin
+import co.touchlab.faktory.KmmBridgeExtension
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishPlugin
 import com.vanniktech.maven.publish.SonatypeHost
+import dev.jimmymorales.featureflags.gradle.kmmbridge.NoOpVersionManager
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -26,6 +29,14 @@ public abstract class PublishPlugin : Plugin<Project> {
             dokkaSourceSets.configureEach {
                 skipDeprecated.set(true)
             }
+        }
+
+        apply<KMMBridgePlugin>()
+        configure<KmmBridgeExtension> {
+            frameworkName.set("FeatureFlagsCore")
+            versionManager.set(NoOpVersionManager)
+            mavenPublishArtifacts()
+            spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
         }
     }
 }
