@@ -3,7 +3,7 @@ import co.touchlab.faktory.versionmanager.VersionManager
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     kotlin("multiplatform")
-    alias(libs.plugins.mavenPublish)
+    id("dev.jimmymorales.featureflags.gradle.publish")
     alias(libs.plugins.kmmbridge)
 }
 

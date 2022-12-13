@@ -23,4 +23,7 @@ dependencies {
     implementation(platform(kotlin("bom", version = libs.versions.kotlin.get())))
     implementation(kotlin("gradle-plugin", version = libs.versions.kotlin.get()))
     implementation(kotlin("reflect", version = libs.versions.kotlin.get()))
+
+    implementation(libs.gradlePlugin.dokka)
+    implementation(libs.gradlePlugin.mavenPublish)
 }
