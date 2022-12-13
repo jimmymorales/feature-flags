@@ -33,10 +33,15 @@ public abstract class PublishPlugin : Plugin<Project> {
 
         apply<KMMBridgePlugin>()
         configure<KmmBridgeExtension> {
-            frameworkName.set("FeatureFlagsCore")
+            frameworkName.set(fullName)
             versionManager.set(NoOpVersionManager)
             mavenPublishArtifacts()
             spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
         }
     }
 }
+
+private val Project.fullName: String
+    get() = rootProject.name.split("-")
+        .plus(name)
+        .joinToString(separator = "") { it.replaceFirstChar(Char::titlecase) }
