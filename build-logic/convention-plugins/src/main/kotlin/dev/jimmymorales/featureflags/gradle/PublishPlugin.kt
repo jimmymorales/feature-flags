@@ -31,12 +31,15 @@ public abstract class PublishPlugin : Plugin<Project> {
             }
         }
 
-        apply<KMMBridgePlugin>()
-        configure<KmmBridgeExtension> {
-            frameworkName.set(fullName)
-            versionManager.set(NoOpVersionManager)
-            mavenPublishArtifacts()
-            spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
+        if (!isSnapshot) {
+            // Only publish iOS XCFramework when the build is not an snapshot one
+            apply<KMMBridgePlugin>()
+            configure<KmmBridgeExtension> {
+                frameworkName.set(fullName)
+                versionManager.set(NoOpVersionManager)
+                mavenPublishArtifacts()
+                spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
+            }
         }
     }
 }
@@ -45,3 +48,5 @@ private val Project.fullName: String
     get() = rootProject.name.split("-")
         .plus(name)
         .joinToString(separator = "") { it.replaceFirstChar(Char::titlecase) }
+
+private val Project.isSnapshot: Boolean get() = version.toString().endsWith("SNAPSHOT")
