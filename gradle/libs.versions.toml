@@ -1,5 +1,5 @@
 [versions]
-agp = "7.4.0-rc01"
+agp = "7.4.0-rc02"
 dokka = "1.7.20"
 jvm-target = "11"
 kmmbridge = "0.3.4"
