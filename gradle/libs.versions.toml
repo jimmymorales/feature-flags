@@ -3,7 +3,7 @@ agp = "7.4.0-rc03"
 dokka = "1.7.20"
 jvm-target = "11"
 kmmbridge = "0.3.4"
-kotlin = "1.7.21"
+kotlin = "1.8.0"
 mavenPublish = "0.23.1"
 stately = "1.2.3"
 
