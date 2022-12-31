@@ -4,7 +4,7 @@ dokka = "1.7.20"
 jvm-target = "11"
 kmmbridge = "0.3.4"
 kotlin = "1.7.21"
-mavenPublish = "0.22.0"
+mavenPublish = "0.23.1"
 stately = "1.2.3"
 
 [plugins]
