@@ -1,11 +1,11 @@
 [versions]
-agp = "7.4.0-rc03"
-dokka = "1.7.20"
+agp = "8.2.2"
+dokka = "1.9.10"
 jvm-target = "11"
 kmmbridge = "0.3.4"
-kotlin = "1.8.0"
+kotlin = "1.9.22"
 mavenPublish = "0.23.1"
-stately = "1.2.3"
+stately = "2.0.6"
 
 [plugins]
 agp-app = { id = "com.android.application", version.ref = "agp" }
@@ -15,4 +15,4 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 
 [libraries]
-stately-collections = { module = "co.touchlab:stately-iso-collections", version.ref = "stately" }
+stately-collections = { module = "co.touchlab:stately-concurrent-collections", version.ref = "stately" }

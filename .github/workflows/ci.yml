@@ -50,6 +50,6 @@ jobs:
           name: error-report
           path: build-reports.zip
 
-      - name: Publish snapshot (main branch only)
-        if: github.ref == 'refs/heads/main'
-        run: ./gradlew publish -PmavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }} -PmavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+#      - name: Publish snapshot (main branch only)
+#        if: github.ref == 'refs/heads/main'
+#        run: ./gradlew publish -PmavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }} -PmavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}

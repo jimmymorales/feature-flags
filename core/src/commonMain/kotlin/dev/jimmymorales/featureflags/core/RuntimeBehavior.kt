@@ -1,6 +1,6 @@
 package dev.jimmymorales.featureflags.core
 
-import co.touchlab.stately.collections.sharedMutableListOf
+import co.touchlab.stately.collections.ConcurrentMutableList
 
 /**
  * Check whether a feature should be enabled or not. Based on the priority of the different
@@ -8,7 +8,7 @@ import co.touchlab.stately.collections.sharedMutableListOf
  * is returned.
  */
 object RuntimeBehavior {
-    private val providers = sharedMutableListOf<FeatureFlagProvider>()
+    private val providers = ConcurrentMutableList<FeatureFlagProvider>()
 
     fun isFeatureEnabled(feature: Feature): Boolean {
         return providers.filter { it.hasFeature(feature) }
