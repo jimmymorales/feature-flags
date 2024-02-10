@@ -9,11 +9,12 @@ plugins {
 
 val libName = "FeatureFlagsCore"
 kotlin {
-    jvmToolchain()
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.jvm.target.get()))
+        vendor.set(JvmVendorSpec.AZUL)
+    }
+
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = libs.versions.jvm.target.get()
-        }
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
         }
