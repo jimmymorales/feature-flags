@@ -14,11 +14,8 @@ kotlin {
         vendor.set(JvmVendorSpec.AZUL)
     }
 
-    jvm {
-        testRuns["test"].executionTask.configure {
-            useJUnitPlatform()
-        }
-    }
+    jvm()
+
     val applyCommonKotlinNativeConfiguration: KotlinNativeTarget.() -> Unit = {
         binaries.framework(libName)
     }

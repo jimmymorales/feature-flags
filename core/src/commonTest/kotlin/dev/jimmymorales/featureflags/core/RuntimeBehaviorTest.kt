@@ -1,16 +1,16 @@
 package dev.jimmymorales.featureflags.core
 
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 internal class RuntimeBehaviorTest {
     private val featureDefaultOff = FeatureFlag.JETPACK_COMPOSE
     private val featureDefaultOn = FeatureFlag.STRICT_MODE
 
-    @BeforeEach
+    @BeforeTest
     fun setUp() {
         RuntimeBehavior.clearFeatureFlagProviders()
     }
