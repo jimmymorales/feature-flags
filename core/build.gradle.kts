@@ -2,7 +2,7 @@ import co.touchlab.faktory.versionmanager.VersionManager
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-    kotlin("multiplatform")
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.mavenPublish)
     alias(libs.plugins.kmmbridge)
 }

@@ -3,20 +3,13 @@
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.dokka.gradle.DokkaTask
 
-buildscript {
-    dependencies {
-        // We have to declare this here in order for kotlin-facets to be generated in iml files
-        // https://youtrack.jetbrains.com/issue/KT-36331
-        classpath(kotlin("gradle-plugin", libs.versions.kotlin.get()))
-        classpath(kotlin("sam-with-receiver", libs.versions.kotlin.get()))
-    }
-}
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.mavenPublish) apply false
-    alias(libs.plugins.dokka) apply false
     alias(libs.plugins.agp.app) apply false // needed for android sample
+    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.mavenPublish) apply false
 }
 
 subprojects {
