@@ -44,6 +44,9 @@ kotlin {
 }
 
 dependencies {
+    // implementation("dev.jimmymorales:feature-flags-core:0.4.0-SNAPSHOT")
+    implementation(projects.core)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
