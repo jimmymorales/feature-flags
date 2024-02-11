@@ -6,50 +6,54 @@ on:
     branches:
       - main
     paths-ignore:
-      - '*.md'
+      - '**/*.md'
   # Always run on PRs
   pull_request:
+    branches: [ main ]
+  merge_group:
 
 concurrency:
-  group: ci-${{ github.ref }}-${{ github.head_ref }}
+  group: 'ci-${{ github.event.merge_group.head_ref || github.head_ref }}-${{ github.workflow }}'
   cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: macos-12
-    strategy:
-      fail-fast: false
+    runs-on: macos-14
     if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v2
 
-      - name: Setup Java
-        uses: actions/setup-java@v3
+      - name: Export JDK version
+        shell: bash
+        run: |
+          JDK_VERSION=$(grep "jdk =" gradle/libs.versions.toml | head -n 1 | cut -d'=' -f2 | tr -d '"' | xargs)
+          echo "JDK_VERSION=${JDK_VERSION}" >> $GITHUB_ENV
+
+      - name: Install JDK ${{ env.JDK_VERSION }}
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '${{ env.JDK_VERSION }}'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Build and run tests
         id: gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: check --no-configuration-cache
+        run: ./gradlew check
 
-      - name: (Fail-only) Bundle the build report
+      - name: (Fail-only) Upload build reports
         if: failure()
-        run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-      - name: (Fail-only) Upload the build report
-        if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: error-report
-          path: build-reports.zip
+          name: reports
+          path: |
+            **/build/reports/**
 
-#      - name: Publish snapshot (main branch only)
-#        if: github.ref == 'refs/heads/main'
-#        run: ./gradlew publish -PmavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }} -PmavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+      - name: Publish snapshot (main branch only)
+        if: github.ref == 'refs/heads/main'
+        run: ./gradlew publish -PmavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }} -PmavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }} -x dokkaHtml --no-configuration-cache
