@@ -37,13 +37,13 @@ kotlin {
     }
 }
 
-object NoOpVersionManager : VersionManager {
-    override fun getVersion(project: Project, versionPrefix: String): String = versionPrefix
-    override fun recordVersion(project: Project, versionString: String) {}
-}
 kmmbridge {
-    frameworkName.set(libName)
-    versionManager.set(NoOpVersionManager)
     mavenPublishArtifacts()
-    spm(spmDirectory = rootProject.projectDir.path, commitManually = true)
+    spm()
+    versionManager.set(object : VersionManager {
+        override fun getVersion(project: Project): String {
+            // For some reason project.version is retuning unspecified
+            return project.rootProject.findProperty("VERSION_NAME").toString()
+        }
+    })
 }
