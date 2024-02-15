@@ -1,14 +1,14 @@
 //
-//  featureflagsTests.swift
-//  featureflagsTests
+//  Feature_FlagsTests.swift
+//  Feature FlagsTests
 //
-//  Created by Jimmy Morales on 8/12/22.
+//  Created by jmorales on 15/02/24.
 //
 
 import XCTest
-@testable import featureflags
+@testable import Feature_Flags
 
-final class FeatureFlagsTests: XCTestCase {
+final class Feature_FlagsTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,13 +1,13 @@
 //
-//  featureflagsUITests.swift
-//  featureflagsUITests
+//  Feature_FlagsUITests.swift
+//  Feature FlagsUITests
 //
-//  Created by Jimmy Morales on 8/12/22.
+//  Created by jmorales on 15/02/24.
 //
 
 import XCTest
 
-final class FeatureFlagsUITests: XCTestCase {
+final class Feature_FlagsUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

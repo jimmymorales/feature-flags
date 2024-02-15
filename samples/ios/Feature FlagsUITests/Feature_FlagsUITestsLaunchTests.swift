@@ -1,13 +1,13 @@
 //
-//  featureflagsUITestsLaunchTests.swift
-//  featureflagsUITests
+//  Feature_FlagsUITestsLaunchTests.swift
+//  Feature FlagsUITests
 //
-//  Created by Jimmy Morales on 8/12/22.
+//  Created by jmorales on 15/02/24.
 //
 
 import XCTest
 
-final class FeatureFlagsUITestsLaunchTests: XCTestCase {
+final class Feature_FlagsUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  featureflags
+//  Feature Flags
 //
-//  Created by Jimmy Morales on 8/12/22.
+//  Created by jmorales on 15/02/24.
 //
 
 import SwiftUI
@@ -12,15 +12,13 @@ struct ContentView: View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
-                .foregroundColor(.accentColor)
+                .foregroundStyle(.tint)
             Text("Hello, world!")
         }
         .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
