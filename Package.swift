@@ -1,9 +1,11 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let remoteKotlinUrl = "https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/devjimmymorales-1009//dev/jimmymorales/core-kmmbridge/0.2.0/core-kmmbridge-0.2.0.zip"
-let remoteKotlinChecksum = "7020c9684f5a463a9b0771f864a75aae65f3110f99bcde735f55ffe987314e19"
+// BEGIN KMMBRIDGE VARIABLES BLOCK (do not edit)
+let remoteKotlinUrl = "https://s01.oss.sonatype.org/content/repositories/staging/dev/jimmymorales/feature-flags-core-kmmbridge/0.2.1/feature-flags-core-kmmbridge-0.2.1.zip"
+let remoteKotlinChecksum = "627c4f8a3cf6a412f2c3edbdd6f37e402597685b34e124485fee7ee535de666f"
 let packageName = "FeatureFlagsCore"
+// END KMMBRIDGE BLOCK
 
 let package = Package(
     name: packageName,

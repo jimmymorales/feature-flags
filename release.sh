@@ -17,7 +17,7 @@ echo "Publishing $NEW_VERSION"
 sed -i '' "s/${SNAPSHOT_VERSION}/${NEW_VERSION}/g" gradle.properties
 
 # Publish
-./gradlew publish -x dokkaHtml --stacktrace
+./gradlew publish -x dokkaHtml --no-configuration-cache
 git commit -am "Prepare for release $NEW_VERSION."
 git tag -a "$NEW_VERSION" -m "Version $NEW_VERSION"
 
