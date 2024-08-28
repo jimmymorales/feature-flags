@@ -13,7 +13,7 @@ kmmbridge = "0.5.2"
 kotlin = "1.9.22"
 lifecycle = "2.7.0"
 mavenPublish = "0.27.0"
-stately = "2.0.6"
+stately = "2.1.0"
 
 [plugins]
 agp-app = { id = "com.android.application", version.ref = "agp" }
